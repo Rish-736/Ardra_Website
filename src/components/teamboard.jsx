@@ -8,11 +8,11 @@ import {motion} from "framer-motion";
 gsap.registerPlugin(ScrollTrigger);
 
 const TEAM_MEMBERS = [
-  { id: 1, name: "MEMBER ONE", role: "POSITION 1", image: "/team/team1.jpeg" },
-  { id: 2, name: "MEMBER TWO", role: "POSITION 2", image: "/team/team2.jpeg" },
-  { id: 3, name: "MEMBER THREE", role: "POSITION 3", image: "/team/team3.jpeg" },
-  { id: 4, name: "MEMBER FOUR", role: "POSITION 4", image: "/team/team4.jpeg" },
-  { id: 5, name: "MEMBER FIVE", role: "POSITION 5", image: "/team/team5.jpeg" },
+  { id: 1, name: "Amritanshu", role: "Electrical Head", image: "/team/team1.jpeg" },
+  { id: 2, name: "Ayush Kumar", role: "Software Head", image: "/team/team2.jpeg" },
+  { id: 3, name: "Satviki Das", role: "Vice-Captain", image: "/team/team3.jpeg" },
+  { id: 4, name: "Om Sakpal", role: "Captain", image: "/team/team4.jpeg" },
+  { id: 5, name: "Divyanshi Jha", role: "Management Head", image: "/team/team5.jpeg" },
 ];
 
 // BoardCard component - only shows image
