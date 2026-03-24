@@ -29,7 +29,7 @@ const EventGallery = () => {
       cover: "/gravitas.png",
       images: ["/gravitas-1.png", "/gravitas-2.png", "/gravitas-3.png"],
       description:
-        "During Gravitas at VIT, Team Ardra showcased its autonomous drine systems to an enthusiastic audience over three days...",
+        "During Gravitas at VIT, Team Ardra showcased its autonomous drone systems to an enthusiastic audience over three days...",
     },
     {
       id: 3,
@@ -51,14 +51,12 @@ const EventGallery = () => {
 
   useEffect(() => {
     if (!selectedEvent) return;
-
+    const event = events.find((e) => e.id === selectedEvent);
     const interval = setInterval(() => {
-      const event = events.find((e) => e.id === selectedEvent);
       setCurrentSlide((prev) => (prev + 1) % event.images.length);
     }, 3000);
-
     return () => clearInterval(interval);
-  }, [selectedEvent, events]);
+  }, [selectedEvent]);
 
   const selectedEventData = events.find((e) => e.id === selectedEvent);
 
@@ -70,18 +68,19 @@ const EventGallery = () => {
             selectedEvent ? "md:flex-row" : ""
           } gap-6 md:gap-8`}
         >
+
           {/* ================= MAIN VIEW ================= */}
           {selectedEvent && (
-            <div className="flex-1">
+            <div className="flex-1 min-w-0">
               <div className="bg-[#231f1f] rounded-3xl overflow-hidden shadow-2xl">
+
                 {/* SLIDESHOW */}
                 <div className="relative aspect-video">
                   <img
                     src={selectedEventData.images[currentSlide]}
+                    alt={selectedEventData.name}
                     className="w-full h-full object-cover"
                   />
-
-                  {/* MOBILE + DESKTOP CONTROLS (same logic, better touch on mobile) */}
                   <button
                     onClick={() =>
                       setCurrentSlide(
@@ -93,12 +92,10 @@ const EventGallery = () => {
                   >
                     <ChevronLeft />
                   </button>
-
                   <button
                     onClick={() =>
                       setCurrentSlide(
-                        (currentSlide + 1) %
-                          selectedEventData.images.length
+                        (currentSlide + 1) % selectedEventData.images.length
                       )
                     }
                     className="absolute right-3 md:right-4 top-1/2 -translate-y-1/2 bg-black/60 p-4 md:p-3 rounded-full"
@@ -109,9 +106,7 @@ const EventGallery = () => {
 
                 {/* DETAILS */}
                 <div className="p-4 md:p-6">
-                  <h2
-                    className={`${audiowide.className} text-2xl md:text-3xl mb-4`}
-                  >
+                  <h2 className={`${audiowide.className} text-2xl md:text-3xl mb-4`}>
                     {selectedEventData.name}
                   </h2>
                   <p className="font-nico text-base md:text-lg leading-relaxed">
@@ -126,18 +121,20 @@ const EventGallery = () => {
           <div
             className={
               selectedEvent
-                ? `
-                  md:w-96
-                  flex md:flex-col
-                  gap-4 md:gap-6
-                  overflow-x-auto md:overflow-y-auto
-                  md:h-[calc(100vh-6rem)]
-                  pr-2
-                `
-                : `
-                  grid grid-cols-2
-                  gap-4 md:gap-8
-                `
+                ? // Sidebar on desktop, vertical list on mobile
+                  `
+                    md:w-96 md:flex-shrink-0
+                    flex flex-col
+                    gap-4 md:gap-6
+                    overflow-y-auto
+                    md:h-[calc(100vh-6rem)]
+                    pr-1
+                  `
+                : // Default: 1 col on mobile, 2 cols on sm+
+                  `
+                    grid grid-cols-1 sm:grid-cols-2
+                    gap-4 md:gap-8
+                  `
             }
           >
             {events.map((event) => (
@@ -148,26 +145,19 @@ const EventGallery = () => {
                   setCurrentSlide(0);
                 }}
                 className={`
-                  cursor-pointer
-                  rounded-xl
-                  overflow-hidden
-                  shadow-lg
-                  transition-all
-                  hover:scale-105
-                  min-w-[70%] md:min-w-0
-                  ${
-                    selectedEvent === event.id
-                      ? "ring-4 ring-blue-500"
-                      : ""
-                  }
+                  cursor-pointer rounded-xl overflow-hidden shadow-lg
+                  transition-all hover:scale-105
+                  ${selectedEvent === event.id ? "ring-4 ring-blue-500" : ""}
                 `}
               >
                 <div className="aspect-video relative">
                   <img
                     src={event.cover}
+                    alt={event.name}
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent" />
+                  {/* FIX: bg-linear-to-t → bg-gradient-to-t */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                   <h3
                     className={`${audiowide.className} absolute bottom-3 left-3 right-3 text-sm md:text-lg`}
                   >
@@ -177,6 +167,7 @@ const EventGallery = () => {
               </div>
             ))}
           </div>
+
         </div>
       </div>
     </div>
