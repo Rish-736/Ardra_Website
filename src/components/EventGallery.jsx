@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Audiowide } from "next/font/google";
+import Image from "next/image";
 
 const audiowide = Audiowide({
   subsets: ["latin"],
@@ -35,7 +36,7 @@ const EventGallery = () => {
       id: 3,
       name: "STAR PARTY",
       cover: "/Starparty.png",
-      images: ["/Starparty-1.png", "/Starparty-2.png", "/Starparty-3..png"],
+      images: ["/Starparty-1.png", "/Starparty-2.png", "/Starparty-3.png"],
       description:
         "At the SEDS VIT Star Party, Team Ardra showcased a live drone flight...",
     },
@@ -66,7 +67,7 @@ const EventGallery = () => {
   return (
     <div className="min-h-screen w-full bg-black p-4 md:p-8 text-[#f8f8e2] overflow-x-hidden">
       <div className="max-w-7xl mx-auto w-full">
-        
+
         {/* ALWAYS consistent layout */}
         <div className="flex flex-col md:flex-row w-full gap-6 md:gap-8">
 
@@ -74,19 +75,20 @@ const EventGallery = () => {
           {selectedEvent && (
             <div className="w-full flex-1">
               <div className="bg-[#231f1f] rounded-3xl overflow-hidden shadow-2xl w-full">
-                
+
                 <div className="relative aspect-video">
-                  <img
+                  <Image
                     src={selectedEventData.images[currentSlide]}
                     alt={selectedEventData.name}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                   />
 
                   <button
                     onClick={() =>
                       setCurrentSlide(
                         (currentSlide - 1 + selectedEventData.images.length) %
-                          selectedEventData.images.length
+                        selectedEventData.images.length
                       )
                     }
                     className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/60 p-3 rounded-full"
@@ -98,7 +100,7 @@ const EventGallery = () => {
                     onClick={() =>
                       setCurrentSlide(
                         (currentSlide + 1) %
-                          selectedEventData.images.length
+                        selectedEventData.images.length
                       )
                     }
                     className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/60 p-3 rounded-full"
@@ -185,10 +187,12 @@ const EventCard = ({
       `}
     >
       <div className="aspect-video relative">
-        <img
+        <Image
           src={event.cover}
           alt={event.name}
-          className="w-full h-full object-cover"
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, 50vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
         <h3
