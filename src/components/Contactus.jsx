@@ -3,6 +3,8 @@
 import React, { useState } from 'react';
 import { Phone, Mail, MapPin, Send } from 'lucide-react';
 import { motion } from 'framer-motion';
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const ContactUs = () => {
   // 1. STATE MANAGEMENT: Track what the user types
@@ -12,6 +14,8 @@ const ContactUs = () => {
     subject: '',
     message: ''
   });
+
+  const router = useRouter();
 
   // Handle typing in inputs
   const handleChange = (e) => {
@@ -70,7 +74,7 @@ const ContactUs = () => {
         transition={{ duration: 0.8 }}
         className="pt-12 pb-12 text-center"
       >
-        <h1 className="text-3xl md:text-5xl font-nico Atracking-widest uppercase text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300 drop-shadow-lg" >
+        <h1 className="text-3xl md:text-5xl font-nico tracking-widest uppercase text-[#FFFFFF] drop-shadow-lg" >
           [Contact Us]
         </h1>
       </motion.div>
@@ -220,7 +224,8 @@ const ContactUs = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="font-audiowide mt-20 relative w-full h-64 md:h-80 rounded-2xl overflow-hidden group shadow-2xl border border-gray-800"
+          onClick={() => router.push("/")}
+          className="font-audiowide mt-20 relative w-full h-64 md:h-80 rounded-2xl overflow-hidden group shadow-2xl border border-gray-800 cursor-pointer"
         >
           <img
             src="/contactus_drone.png"
@@ -242,7 +247,6 @@ const ContactUs = () => {
             </div>
           </div>
         </motion.div>
-
       </motion.div>
     </div>
   );
