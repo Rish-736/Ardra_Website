@@ -1,11 +1,11 @@
 "use client";
 import { motion } from "framer-motion";
-import { Aubrey, Big_Shoulders} from "next/font/google";
+import { Aubrey, Big_Shoulders } from "next/font/google";
 import localFont from "next/font/local";
 const aubrey = Aubrey({ subsets: ["latin"], weight: ["400"], display: "swap" });
 const bigShoulders = Big_Shoulders({ subsets: ["latin"], weight: ["400"], display: "swap" });
 
-const ocrA= localFont({
+const ocrA = localFont({
   src: "../../public/fonts/ocraextended.woff",
   display: "swap",
 });
@@ -13,7 +13,7 @@ const ocrA= localFont({
 export default function About() {
   return (
     <section className="w-full bg-black text-[#f8f8e2] py-32 px-[6%]">
-      
+
       <div className="text-center mx-4 sm:mx-8 md:mx-12 lg:mx-20 my-10 sm:my-12 md:my-16 lg:my-20">
         <motion.h2
           className="font-nico text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-widest"
@@ -63,11 +63,11 @@ export default function About() {
               <div className={`text-right ${aubrey.className}`}>Autonomous Drones</div>
 
               <div className={`${bigShoulders.className}`}>Team Size</div>
-              <div className={`text-right ${aubrey.className}`}>32</div>
+              <div className={`text-right ${aubrey.className}`}>16</div>
 
               <div className={`${bigShoulders.className}`}>Team Motto</div>
               <div className={`text-right ${aubrey.className}`}>THROTTLING TOWARDS EXCELLENCE</div>
-              
+
             </div>
           </motion.div>
 

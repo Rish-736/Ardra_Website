@@ -10,10 +10,10 @@ const benchNine = BenchNine({
 const Footer = () => {
   return (
     <footer className="w-full bg-black text-white pt-12 pb-0 bottom-0">
-      
-      <div className="max-w-7xl mx-auto">
-        
-        
+
+      <div className="max-w-7xl mx-auto relative z-10">
+
+
         <div className="flex flex-col md:flex-row items-start justify-between">
           <div className="hidden md:block w-1/3">
             <p className="text-white font-nico text-lg leading-relaxed">
@@ -108,7 +108,7 @@ const Footer = () => {
         </div>
 
         {/* DECORATIVE ELLIPSE */}
-        <div className="relative hidden md:block">
+        <div className="relative hidden md:block z-0">
           <img
             aria-hidden="true"
             src="/Ellipse 33.png"

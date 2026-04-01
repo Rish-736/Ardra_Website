@@ -73,7 +73,7 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Menu (ABSOLUTE CENTERED & SPREAD OUT) */}
-          <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 ml-24">
+          <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2">
             <div className="flex items-center space-x-20">
               {navLinks.map((link) => {
                 const active = pathname === link.href;
@@ -81,15 +81,30 @@ export default function Navbar() {
                   <Link
                     key={link.name}
                     href={link.href}
-                    className={`font-Anton text-white hover:text-blue-400 text-sm font-anton tracking-widest uppercase transition-colors duration-200 whitespace-nowrap ${
-                      active ? "border-b-2 border-blue-400 pb-1" : ""
-                    }`}
+                    className={`font-Anton text-white hover:text-blue-400 text-sm font-anton tracking-widest uppercase transition-colors duration-200 whitespace-nowrap ${active ? "border-b-2 border-blue-400 pb-1" : ""
+                      }`}
                   >
                     {link.name}
                   </Link>
                 );
               })}
             </div>
+          </div>
+
+          <div className="hidden md:flex absolute right-4">
+            <a
+              href="https://sedsvit.in"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src="/seds_1.jpeg"
+                alt="SEDS VIT"
+                width={120}
+                height={40}
+                className="object-contain w-auto h-10"
+              />
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -123,9 +138,8 @@ export default function Navbar() {
                     <Link
                       href={link.href}
                       onClick={() => setIsOpen(false)}
-                      className={`block text-lg font-anton text-white hover:text-blue-400 transition-colors tracking-widest uppercase ${
-                        active ? "border-b-2 border-blue-400 pb-1" : ""
-                      }`}
+                      className={`block text-lg font-anton text-white hover:text-blue-400 transition-colors tracking-widest uppercase ${active ? "border-b-2 border-blue-400 pb-1" : ""
+                        }`}
                     >
                       {link.name}
                     </Link>
