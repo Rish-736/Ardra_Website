@@ -1,130 +1,107 @@
 "use client";
-import ImageCard from "./ImageCard";
-import { motion } from "framer-motion";
+import Image from "next/image";
+import Reveal from "@/components/Reveal";
 
-const Comps = [
-  { url: "/spros.png", alt: "Spros" },
-  { url: "/cognizance.png", alt: "Cognizance" },
-  { url: "/Aerothon.png", alt: "City skyline" },
-  { url: "/techfest.png", alt: "Sunset hills" },
-  { url: "/IROC.png", alt: "Ocean cliffs" },
+const SPONSORS = [
+  { src: "/Solidworks.png", name: "SolidWorks" },
+  { src: "/anys.png", name: "Ansys" },
+  { src: "/altium.png", name: "Altium" },
+  { src: "/protoworks.png", name: "Protoworks" },
 ];
 
-const Sponsors = [
-  { url: "/Solidworks.png", alt: "Forest road" },
-  { url: "/anys.png", alt: "Mountain landscape" },
-  { url: "/altium.png", alt: "City skyline" },
-  { url: "/protoworks.png", alt: "Sunset hills" },
+const COMPETITIONS = [
+  { src: "/spros.png", name: "SPROS" },
+  { src: "/cognizance.png", name: "Cognizance" },
+  { src: "/Aerothon.png", name: "Aerothon" },
+  { src: "/techfest.png", name: "Techfest" },
+  { src: "/IROC.png", name: "IROC" },
 ];
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15, delayChildren: 0.2 },
-  },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 30, scale: 0.9 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
-  },
-};
 
 export default function CompsAndSpons() {
+  // duplicate each list for seamless infinite marquees
+  const sponsorRow = [...SPONSORS, ...SPONSORS];
+  const compRow = [...COMPETITIONS, ...COMPETITIONS];
+
   return (
-    <div className="relative overflow-hidden py-10 md:py-16 lg:py-20 bg-black">
-      <motion.img
-        aria-hidden="true"
-        src="/Ellipse 32.png"
-        alt=""
-        className="absolute w-32 h-32 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 pointer-events-none top-12 sm:top-16 md:top-24 -left-8 sm:left-0"
-        initial={{ opacity: 0, x: -100 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-      />
-      <motion.img
-        aria-hidden="true"
-        src="/Ellipse 28.png"
-        alt=""
-        className="absolute w-32 h-32 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 pointer-events-none top-12 sm:top-16 md:top-24 -right-8 sm:right-0"
-        initial={{ opacity: 0, x: 100 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-      />
-      <motion.img
-        aria-hidden="true"
-        src="/Ellipse 30.png"
-        alt=""
-        className="absolute w-32 h-32 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 pointer-events-none transform -translate-x-1/2 -translate-y-1/2 top-1/2 md:top-3/5 left-1/2"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
-      />
-      <motion.img
-        src="Ellipse 31.png"
-        alt="decor"
-        className="absolute w-32 h-32 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 pointer-events-none -bottom-8 sm:bottom-12 -left-8 sm:left-0"
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-      />
-      {/* Competitions */}
-      <div className="text-center my-16">
-        <motion.h2
-          className="font-nico text-4xl md:text-5xl lg:text-6xl tracking-widest"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          [COMPETITIONS]
-        </motion.h2>
+    <section className="relative w-full bg-black py-[120px] overflow-hidden">
+      <div className="absolute inset-0 aurora-soft" aria-hidden />
+      <div className="relative z-10 mx-auto max-w-7xl px-5 md:px-8">
+        {/* ===== SPONSORS ===== */}
+        <Reveal from="up" className="text-center">
+          <h3 className="font-space uppercase tracking-[0.2em] text-[var(--text-secondary)] text-sm">
+            Our Sponsors &amp; Partners
+          </h3>
+        </Reveal>
+
+        <div className="mt-10 relative overflow-hidden">
+          {/* edge fades */}
+          <div
+            className="pointer-events-none absolute left-0 top-0 bottom-0 w-24 z-10"
+            style={{ background: "linear-gradient(90deg, #000, transparent)" }}
+          />
+          <div
+            className="pointer-events-none absolute right-0 top-0 bottom-0 w-24 z-10"
+            style={{ background: "linear-gradient(270deg, #000, transparent)" }}
+          />
+
+          <div className="flex w-max animate-marquee">
+            {sponsorRow.map((s, i) => (
+              <div
+                key={`${s.name}-${i}`}
+                className="glass mx-5 px-12 py-7 flex items-center justify-center shrink-0"
+                style={{ borderRadius: "9999px" }}
+              >
+                <Image
+                  src={s.src}
+                  alt={s.name}
+                  width={220}
+                  height={80}
+                  className="h-16 md:h-20 w-auto object-contain grayscale brightness-150 hover:grayscale-0 hover:brightness-100 transition-all duration-300"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ===== COMPETITIONS (reverse-scrolling marquee) ===== */}
+        <Reveal from="up" className="text-center mt-24">
+          <h3 className="font-space uppercase tracking-[0.2em] text-[var(--text-secondary)] text-sm">
+            Competitions We&apos;ve Flown
+          </h3>
+        </Reveal>
+
+        <div className="mt-12 relative overflow-hidden">
+          {/* edge fades */}
+          <div
+            className="pointer-events-none absolute left-0 top-0 bottom-0 w-24 z-10"
+            style={{ background: "linear-gradient(90deg, #000, transparent)" }}
+          />
+          <div
+            className="pointer-events-none absolute right-0 top-0 bottom-0 w-24 z-10"
+            style={{ background: "linear-gradient(270deg, #000, transparent)" }}
+          />
+
+          <div className="flex w-max animate-marquee" style={{ animationDirection: "reverse" }}>
+            {compRow.map((c, i) => (
+              <div
+                key={`${c.name}-${i}`}
+                className="glass glass-hover group w-56 md:w-64 mx-4 shrink-0 h-48 md:h-52 flex flex-col items-center justify-center gap-4 p-6"
+              >
+                <Image
+                  src={c.src}
+                  alt={c.name}
+                  width={180}
+                  height={100}
+                  className="h-20 md:h-24 w-auto object-contain transition-transform duration-500 group-hover:scale-110"
+                />
+                <span className="font-space text-sm uppercase tracking-[0.12em] text-[var(--text-secondary)]">
+                  {c.name}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-
-      <motion.div
-        className="flex flex-wrap justify-center gap-6 px-6"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-      >
-        {Comps.map((img, i) => (
-          <motion.div key={i} variants={cardVariants}>
-            <ImageCard url={img.url} alt={img.alt} />
-          </motion.div>
-        ))}
-      </motion.div>
-
-      {/* Sponsors */}
-      <div className="text-center my-16">
-        <motion.h2
-          className="font-nico text-4xl md:text-5xl lg:text-6xl tracking-widest"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          [OUR SPONSORS]
-        </motion.h2>
-      </div>
-
-      <motion.div
-        className="flex flex-wrap justify-center gap-6 px-6 pb-16"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-      >
-        {Sponsors.map((img, i) => (
-          <motion.div key={i} variants={cardVariants}>
-            <ImageCard url={img.url} alt={img.alt} />
-          </motion.div>
-        ))}
-      </motion.div>
-
-    </div>
+    </section>
   );
 }
