@@ -85,7 +85,7 @@ export default function Achievements() {
   return (
     <section
       id="achievements"
-      className="relative w-full py-[120px] overflow-hidden"
+      className="relative w-full py-20 md:py-[120px] overflow-hidden"
       style={{ backgroundColor: "var(--surface)" }}
     >
       <div className="absolute inset-0 aurora-soft" aria-hidden />

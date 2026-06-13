@@ -11,7 +11,7 @@ const EVENTS = [
 
 export default function EventGallery() {
   return (
-    <section id="events" className="relative w-full bg-black py-[120px] overflow-hidden noise">
+    <section id="events" className="relative w-full bg-black py-20 md:py-[120px] overflow-hidden noise">
       <div className="absolute inset-0 aurora" aria-hidden />
       <div className="relative z-10 mx-auto max-w-6xl px-5 md:px-8">
         <SectionTitle index="/ 05" label="Beyond The Build" title="Events & Outreach" />

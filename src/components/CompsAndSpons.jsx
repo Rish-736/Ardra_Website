@@ -23,7 +23,7 @@ export default function CompsAndSpons() {
   const compRow = [...COMPETITIONS, ...COMPETITIONS];
 
   return (
-    <section className="relative w-full bg-black py-[120px] overflow-hidden">
+    <section className="relative w-full bg-black py-20 md:py-[120px] overflow-hidden">
       <div className="absolute inset-0 aurora-soft" aria-hidden />
       <div className="relative z-10 mx-auto max-w-7xl px-5 md:px-8">
         {/* ===== SPONSORS ===== */}

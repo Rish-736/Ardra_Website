@@ -49,7 +49,7 @@ export default function OurDrones() {
   return (
     <section
       id="drones"
-      className="relative w-full bg-black py-[120px] overflow-hidden"
+      className="relative w-full bg-black py-20 md:py-[120px] overflow-hidden"
     >
       {/* blueprint grid + aurora backdrop */}
       <div className="absolute inset-0 aurora" aria-hidden />
@@ -86,7 +86,7 @@ export default function OurDrones() {
                     alt={`${drone.name} drone`}
                     width={320}
                     height={200}
-                    className="max-h-[200px] w-auto object-contain origin-center transition-transform duration-500 ease-out group-hover:scale-[2.1] group-hover:drop-shadow-[0_0_45px_rgba(30,111,255,0.7)] relative z-30"
+                    className="max-h-[200px] w-auto object-contain origin-center transition-transform duration-500 ease-out md:group-hover:scale-[2.1] group-hover:drop-shadow-[0_0_45px_rgba(30,111,255,0.7)] relative z-30"
                   />
                 </div>
 

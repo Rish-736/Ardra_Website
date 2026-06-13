@@ -22,7 +22,7 @@ export default function Contactus() {
     "w-full bg-[rgba(255,255,255,0.05)] border-b border-white/15 focus:border-[var(--accent-2)] outline-none px-3 py-3 font-inter text-[var(--text-primary)] placeholder:text-[var(--text-secondary)]/60 rounded-t transition-colors";
 
   return (
-    <section id="contact" className="relative w-full bg-black py-[120px] overflow-hidden noise">
+    <section id="contact" className="relative w-full bg-black py-20 md:py-[120px] overflow-hidden noise">
       <div className="absolute inset-0 aurora" aria-hidden />
       <div className="absolute inset-0 hero-spotlight opacity-60" aria-hidden />
       <div className="relative z-10 mx-auto max-w-6xl px-5 md:px-8">

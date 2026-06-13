@@ -13,7 +13,7 @@ const STATS = [
 
 export default function About() {
   return (
-    <section id="about" className="relative w-full bg-black py-[120px] overflow-hidden noise">
+    <section id="about" className="relative w-full bg-black py-20 md:py-[120px] overflow-hidden noise">
       <div className="absolute inset-0 aurora-soft" aria-hidden />
       <div className="relative z-10 mx-auto max-w-7xl px-5 md:px-8">
         <SectionTitle index="/ 01" label="Who We Are" title="About Us" align="left" />

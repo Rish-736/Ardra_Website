@@ -144,7 +144,7 @@ function BoardCard({ member }) {
 
 export default function Board() {
   return (
-    <section id="board" className="relative w-full bg-black py-[120px] overflow-hidden noise">
+    <section id="board" className="relative w-full bg-black py-20 md:py-[120px] overflow-hidden noise">
       {/* gradient backdrop */}
       <div className="absolute inset-0 aurora" aria-hidden />
       <div
