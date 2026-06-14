@@ -27,7 +27,7 @@ const BOARD = [
   {
     name: "Rishit Sinha",
     role: "Vice Captain",
-    image: "/team/Rishit.jpeg",
+    image: "/team/Rish.jpeg",
     instagram: "",
     linkedin: "",
   },
@@ -55,7 +55,7 @@ const BOARD = [
   {
     name: "Divyansh",
     role: "Electrical Lead",
-    image: "/team/Div.jpeg",
+    image: "/team/Div1.jpeg",
     instagram: "",
     linkedin: "",
   },
